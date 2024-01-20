@@ -1,0 +1,20 @@
+{
+    "posts": [
+      { "id": "1", "title": "a title", "userid": "1" },
+      { "id": "2", "title": "another title", "userid": "1" },
+      { "id": "3", "title": "test", "userid": "2" }
+    ],
+    "comments": [
+      { "id": "1", "text": "a comment about post 1", "postId": "1" },
+      { "id": "2", "text": "another comment about post 1", "postId": "1" }
+    ],
+    "profile": {
+      "name": "typicode"
+    },
+    "users": [
+      { "userid": "1", "name": "Administrador Anotatios", "role": "admin", "password": "123456", "email": "admin@anotations.com.br" }
+    ],
+    "anotations": [
+      { "userid": "1", "time": "09:00:00", "tags": "importante", "descricao": "teste", "price": "12,00" }
+    ]
+}
