@@ -77,12 +77,6 @@ img {
 }
 
 @media screen and (max-width: 768px) {
-    .btn-danger {
-        /* background-color: #F8F9FA !important; */
-        /* color: #1295FD !important; */
-        border: none;
-        /* --bs-btn-padding-x: 0; */
-        /* --bs-btn-padding-y: 0; */
-    }
+
 }
 </style>

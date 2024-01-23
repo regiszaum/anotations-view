@@ -26,7 +26,7 @@
 						</div>
                         <div class="d-flex flex-row justify-content-end w-100 mt-5">
 							<button class="btn btn-outline-info me-2" @click="hideModal">Cancelar</button>
-							<button class="btn btn-danger">Excluir</button>
+							<button class="btn btn-danger" @click="deleteAnotation" >Excluir</button>
 						</div>
 					</div>
 				</div>
@@ -36,12 +36,25 @@
 </template>
 
 <script>
+import axios from 'axios';
+import LoadingComponent from '@/components/atoms/LoadingComponent.vue';
+import { useToast } from "vue-toastification";
 
 export default {
 	data() {
 		return {
 			showModal: false,
+			isLoading: false,
+			toast: useToast(),
 		};
+	},
+	components: { LoadingComponent },
+	emits: ['deleted'],
+	props: {
+		id: {
+			type: String,
+			required: true,
+		},
 	},
 	methods: {
 		hideModal() {
@@ -49,6 +62,21 @@ export default {
 		},
 		showModalDelete() {
 			this.showModal = true;
+		},
+		deleteAnotation() {
+			this.isLoading = true;
+			axios
+				.delete(`${import.meta.env.VITE_API_MOCK}/anotations/${this.id}`)
+				.then(() => {
+					this.toast.success('Anotação apagada com sucesso!');
+					this.$emit('deleted');
+				})
+				.catch(() => {
+					this.toast.error('Houve um erro na deleção!');
+				})
+				.finally(() => {
+					this.isLoading = false;
+				});
 		},
 	},
 };

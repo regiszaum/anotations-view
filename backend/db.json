@@ -24,39 +24,6 @@
       "id": "2530"
     },
     {
-      "id": "949a",
-      "email": "teste@teste.com.br",
-      "password": "222222"
-    },
-    {
-      "id": "e1cd",
-      "email": "12321@sad.com",
-      "password": "123123"
-    },
-    {
-      "id": "f35c",
-      "email": "12321@sad.com",
-      "password": "123123"
-    },
-    {
-      "id": "3a55",
-      "email": "asdasd@123",
-      "password": ".comasd"
-    },
-    {
-      "id": "76c1",
-      "email": "asdasd@123",
-      "password": "asdasd"
-    },
-    {
-      "id": "b18f",
-      "email": ""
-    },
-    {
-      "id": "6fe7",
-      "email": ""
-    },
-    {
       "id": "9e0d",
       "email": "regis@regis.com",
       "password": "111111"
@@ -64,18 +31,32 @@
   ],
   "anotations": [
     {
-      "id": "2",
-      "descricao": "teste",
-      "potential_value": "12,00",
-      "category": "importante",
-      "time": "09:00:00"
+      "id": "7670",
+      "descricao": "sdasdsdad",
+      "potential_value": "123123",
+      "category": "Ligar depois",
+      "date": "13/01/2024"
     },
     {
-      "id": "1",
-      "descricao": "teste",
-      "potential_value": "12,00",
-      "category": "importante",
-      "time": "09:00:00"
+      "id": "52d1",
+      "descricao": "sdasdsdad",
+      "potential_value": "123123",
+      "category": "Ligar depois",
+      "date": "13/01/2024"
+    },
+    {
+      "id": "b609",
+      "descricao": "sdasdsdad",
+      "potential_value": "123123",
+      "category": "Ligar depois",
+      "date": "13/01/2024"
+    },
+    {
+      "id": "6083",
+      "descricao": "sdasdsdad",
+      "potential_value": "123123",
+      "category": "Ligar depois",
+      "date": "13/01/2024"
     }
   ]
 }

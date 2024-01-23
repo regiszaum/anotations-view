@@ -20,13 +20,13 @@
 						<div class="d-flex flex-column w-100 text-center">
 							<form>
 								<div class="mb-3">
-									<textarea type="text" class="form-control textarea-input" id="exampleInputPassword1" placeholder="Exp.: Ao ligar fala com Luiza" rows="5" required />
+									<textarea type="text" class="form-control textarea-input" id="exampleInputPassword1" placeholder="Exp.: Ao ligar fala com Luiza" rows="5" v-model="this.formCreate.description" required />
 								</div>
                                 <div class="mb-3">
 									<div class="d-flex w-100">
 										<label for="exampleInputEmail1" class="form-label text-start">Potencial do negócio</label>
 									</div>
-                                    <input type="number" class="form-control" id="exampleInputEmail1" placeholder="R$00,00" required>
+                                    <input type="text" class="form-control" id="exampleInputEmail1" placeholder="R$00,00" v-model="this.formCreate.potentialValue" @input="restrictInput" required>
                                 </div>
                                 <div class="mb-3">
 									<div class="d-flex w-100">
@@ -34,17 +34,17 @@
 									</div>
                                     <select class="form-select form-select-md mb-3" v-model="this.formCreate.categorySelected">
 										<option value="not-selected" disabled selected>Selecione uma categoria</option>
-										<option value="important">Importante</option>
-										<option value="call-later">Ligar depois</option>
-										<option value="dont-forget">Não esquecer</option>
-										<option value="urgent">Urgente</option>
+										<option value="Importante">Importante</option>
+										<option value="Ligar depois">Ligar depois</option>
+										<option value="Não esquecer">Não esquecer</option>
+										<option value="Urgente">Urgente</option>
 									</select>
                                 </div>
                                 <div class="mb-3">
 									<div class="d-flex w-100">
 										<label for="exampleInputEmail1" class="form-label text-start">Lembrete</label>
 									</div>
-                                    <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Selecione uma data" required>
+                                    <input type="date" class="form-control" id="exampleInputEmail1" placeholder="Selecione uma data" v-model="this.formCreate.reminderDate" required>
                                 </div>
                             </form>
 						</div>
@@ -56,7 +56,7 @@
 									</div>
 								</div>
 								<div class="col-10">
-									<button class="btn btn-primary w-100">Salvar</button>
+									<button class="btn btn-primary w-100" @click="createAnotation">Salvar</button>
 								</div>
 							</div>
 						
@@ -66,22 +66,30 @@
 			</div>
 		</div>
 	</div>
+	<LoadingComponent v-if="isLoading"/>
 </template>
 
 <script>
+import axios from 'axios';
+import { useToast } from "vue-toastification";
+import LoadingComponent from '../atoms/LoadingComponent.vue';
 
 export default {
 	data() {
 		return {
 			showModal: false,
+			isLoading: false,
 			formCreate: {
 				description: '',
 				potentialValue: '',
 				categorySelected: 'not-selected',
 				reminderDate: '',
-			}
+			},
+			toast: useToast(),
 		};
 	},
+	emits: ['created'],
+	components: { LoadingComponent },
 	methods: {
 		hideModal() {
 			this.showModal = false;
@@ -91,6 +99,43 @@ export default {
 			if (window.innerWidth <= 768) {
 				this.disableBodyScroll();
 			}
+		},
+		restrictInput(event) {
+			const inputValue = event.target.value.replace(/[^\d,.]/g, '');
+			
+			this.formCreate.potentialValue = inputValue;
+		},
+		createAnotation() {
+			this.isLoading = true;
+			const parts = this.formCreate.reminderDate.split('-');
+			const year = parts[0];
+			const month = parts[1];
+			const day = parts[2];
+
+			const formattedDate = `${day}/${month}/${year}`;
+
+			axios
+				.post(`${import.meta.env.VITE_API_MOCK}/anotations`, {
+					descricao: this.formCreate.description,
+					potential_value: this.formCreate.potentialValue,
+					category: this.formCreate.categorySelected,
+					date: formattedDate
+				})
+				.then(() => {
+					this.toast.success('Anotação criada com sucesso.');
+					this.$emit('created');
+					this.formCreate.description = '';
+					this.formCreate.potentialValue = '';
+					this.formCreate.categorySelected = 'not-selected';
+					this.formCreate.reminderDate = '';
+
+				})
+				.catch(() => {
+					this.toast.error('Erro ao fazer a requisição.');
+				})
+				.finally(() => {
+					this.isLoading = false;
+				});
 		},
 		disableBodyScroll() {
 			document.body.style.overflow = 'hidden';
