@@ -1,16 +1,16 @@
 # O backend do projeto foi "mockado" com json server
 ![Logo of the project](../backend/assets/json-logo.png)
 
-## Instale o json server globalmente na máquina local para começar o projeto
+## Instale o json server localmente para começar o projeto
 
 ```shell
-npm install -g json-server
+npm install
 ```
 
 ## Agora iremos executar o projeto
 
 ```shell
-json-server --watch db.json
+npm run dev
 ```
 
 ## Pronto! Daqui, partimos para o frontend

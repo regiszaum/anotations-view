@@ -167,6 +167,7 @@ label {
 
 .textarea-input {
 	border-radius: 12px !important;
+	resize: none;
 }
 
 @media screen and (max-width: 768px) {

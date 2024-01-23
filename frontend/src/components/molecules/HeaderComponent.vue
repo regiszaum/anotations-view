@@ -1,7 +1,7 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-md bg-body-tertiary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand">
                 <img src="../../assets/icons/clips.svg" alt="Bootstrap" width="30" height="30">
                 <span class="title-brand">Speedio</span>
             </a>
@@ -17,7 +17,7 @@
                     <router-link class="nav-link" to="/anotations" exact-active-class="active">Anotações</router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link" to="/anotatsions" exact-active-class="active">Perfil</router-link>
+                    <button class="btn btn-danger" @click="doLogout"><i class="bi bi-x-octagon-fill me-2"></i>Sair</button>
                 </li>
             </ul>
             </div>
@@ -25,8 +25,26 @@
     </nav>
 </template>
 
-<script setup>
+<script>
+import { useToast } from "vue-toastification";
 
+export default {  
+  data() {
+    return {
+        toast: useToast(),
+    };
+  },
+  emits: ['logout'],
+  methods: {
+    doLogout() {
+        this.isLoading = true;
+        this.toast.success('Usuário deslogado com sucesso!');
+        this.$emit('logout');
+        this.$router.push('/login');
+        this.isLoading = false;
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -50,5 +68,21 @@ img {
 .active {
     font-weight: bold;
     color: #1295FD !important;
+}
+
+.btn-danger:hover {
+    color: #1295FD !important;
+    font-weight: bold;
+    background-color: white !important;
+}
+
+@media screen and (max-width: 768px) {
+    .btn-danger {
+        /* background-color: #F8F9FA !important; */
+        /* color: #1295FD !important; */
+        border: none;
+        /* --bs-btn-padding-x: 0; */
+        /* --bs-btn-padding-y: 0; */
+    }
 }
 </style>
