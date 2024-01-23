@@ -1,0 +1,15 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "![Logo of the project](../backend/assets/json-logo.png)",
+  "main": "index.js",
+  "scripts": {
+    "dev": "json-server --watch db.json --port 3000"
+  },
+  "keywords": [],
+  "author": "regiszaum",
+  "license": "ISC",
+  "dependencies": {
+    "json-server": "^1.0.0-alpha.22"
+  }
+}
