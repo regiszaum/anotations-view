@@ -1,10 +1,8 @@
 
 <template>
-  <div class="app w-100 d-flex">
-    <div class="d-flex flex-column w-100">
-      <HeaderComponent v-if="authenticated" @logout="doLogout"/>
-      <RouterView />
-    </div>
+  <div class="app w-100 d-flex flex-column">
+    <HeaderComponent v-if="authenticated" @logout="doLogout"/>
+    <RouterView />
   </div>
 </template>
 

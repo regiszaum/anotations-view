@@ -1,7 +1,7 @@
 <template>
-  <div class="anotations-view w-100 c-only-mobile">
-    <div class="d-flex flex-column c-only-mobile">
-      <div class="container c-only-mobile">
+  <div class="anotations-view w-100">
+    <div class="d-flex flex-column">
+      <div class="container">
 
         <section class="d-flex justify-content-center my-5 has-anotations-desktop" v-if="hasAnotations">
           <TableAnotations :columns="columns" class="text-start">
@@ -206,10 +206,7 @@ export default {
   .anotations-view {
     justify-content: unset;
   }
-
-  .c-only-mobile {
-    height: 100%;
-  }
+  
   .anotations-empty {
     height: 80dvh;
   }

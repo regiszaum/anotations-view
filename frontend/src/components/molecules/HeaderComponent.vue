@@ -11,9 +11,6 @@
             <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <router-link class="nav-link" to="/login" exact-active-class="active">Login</router-link>
-                </li>
-                <li class="nav-item">
                     <router-link class="nav-link" to="/anotations" exact-active-class="active">Anotações</router-link>
                 </li>
                 <li class="nav-item">
