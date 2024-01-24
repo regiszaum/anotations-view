@@ -27,6 +27,11 @@
       "id": "9e0d",
       "email": "regis@regis.com",
       "password": "111111"
+    },
+    {
+      "id": "46b8",
+      "email": "speed@speed.com",
+      "password": "123123"
     }
   ],
   "anotations": [
@@ -39,20 +44,6 @@
     },
     {
       "id": "52d1",
-      "descricao": "sdasdsdad",
-      "potential_value": "123123",
-      "category": "Ligar depois",
-      "date": "13/01/2024"
-    },
-    {
-      "id": "b609",
-      "descricao": "sdasdsdad",
-      "potential_value": "123123",
-      "category": "Ligar depois",
-      "date": "13/01/2024"
-    },
-    {
-      "id": "6083",
       "descricao": "sdasdsdad",
       "potential_value": "123123",
       "category": "Ligar depois",

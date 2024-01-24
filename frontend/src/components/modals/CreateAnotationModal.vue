@@ -93,6 +93,7 @@ export default {
 	methods: {
 		hideModal() {
 			this.showModal = false;
+			this.enableBodyScroll();
 		},
 		showModalCreate() {
 			this.showModal = true;
@@ -140,6 +141,9 @@ export default {
 		disableBodyScroll() {
 			document.body.style.overflow = 'hidden';
 		},
+		enableBodyScroll() {
+			document.body.style.overflow = 'scroll';
+		}
 	},
 };
 </script>
