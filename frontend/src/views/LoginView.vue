@@ -25,7 +25,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputPassword1" class="form-label fw-bold">Senha:</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" v-model="this.formLogin.password" required>
+                                    <input type="password" class="form-control" id="exampleInputPassword1" v-model="this.formLogin.password" autocomplete="current-password" required>
                                 </div>
                                 <div class="d-flex w-100">
                                     <div class="d-flex flex-column justify-content-center w-100">
@@ -178,4 +178,9 @@ input {
     border-radius: 25px !important;
 }
 
+@media screen and (max-width: 768px) {
+    .login-view {
+        margin-bottom: 1.5rem;
+    }
+}
 </style>
